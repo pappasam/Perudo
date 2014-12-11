@@ -1,6 +1,6 @@
 import re
 import random
-import collections
+import collections # This one might not be necessary
 
 class Die:
 	'''
