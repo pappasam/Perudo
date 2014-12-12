@@ -1,6 +1,7 @@
 import re
 import random
 import collections # This one might not be necessary
+import itertools
 
 class Die:
 	'''
@@ -30,6 +31,9 @@ class Cup:
 
 	def dice_values(self):
 		return [die.value for die in self.dice]
+
+	def view_dice(self):
+		print(self.dice_values())
 
 	def number_dice(self):
 		return len(self.dice)
@@ -96,8 +100,34 @@ class Roster:
 	def eliminate_zero_dice(self):
 		'''Eliminate players with zero dice'''
 		self.roster = [player for player in self.roster if player.cup.number_dice() > 0]
-			
+
+def input_int(string, min=1, max=6):
+	''' Request user input for integer, provide instructions, 
+	and throw error if not correct '''
+	while True:
+		try:
+			x = int(input(string + " > "))
+			if x >= min and x <= max:
+				return int(x)
+			else:
+				print("Please input a number between %i and %i", min, max)
+		except:
+			print("Please input an integer")
+
+def round(START_IMPLEMENTATION_HERE):
+	'''This should be where you start implementation tomorrow'''
+
+def main():
+
+	# Set roster
+	roster = Roster()
+
+	# Initialize the game
+	number_players = input_int("Please enter number of players (int between 1 and 6)")
+	roster.set_roster(number_players)
+
 if __name__ == '__main__':
+	main()
 	print("---Testing class: Players")
 	p = Roster(start_dice=1)
 	p.set_roster(3)
